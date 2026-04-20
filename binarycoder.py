@@ -2,7 +2,7 @@ with open("BadWords.txt", "r") as file:
     badwords = [line.strip().lower() for line in file]
 
 def contains_badword(text):
-    text = text.lower()
+    text = text.lower().split()
     for badword in badwords:
         if badword in text:
             return True
