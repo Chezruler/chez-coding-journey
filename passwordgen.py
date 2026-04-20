@@ -1,15 +1,8 @@
-import random
 import string
 import os
+import secrets
 
 from time import sleep
-
-def gen_pass(lenght = 12):
-    chars = string.ascii_letters + string.digits
-    password = ""
-    for _ in range(lenght):
-        password += random.choice(chars)
-    return password
 
 def main():
     while True:
@@ -17,17 +10,14 @@ def main():
         if user_input.upper() != "Y":
             break
         leng = int(input(f"Enter your password lenght (default is 12)"))
-        password = gen_pass(leng)
+        password = secrets.token_hex(leng)
         print("*****************************************************************")
         print("Copy the password fast, you have 5 seconds before it gets deleted")
         print("*****************************************************************")
         
-        sleep(1)
-        print("1")
-        sleep(1)
-        print("2")
-        sleep(1)
-        print("3")
+        for i in range(3):
+            sleep(1)
+            print(i + 1)
 
         print(f"this is your password! it will delete after 5 seconds!")
         print(f"{password}")
